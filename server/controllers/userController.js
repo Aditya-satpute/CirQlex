@@ -72,6 +72,10 @@ export const loginUser = async (req, res)=>{
             return res.json({success: false, message: "Please verify your IITP email address first."})
         }
 
+        if(user.isRestricted){
+            return res.json({success: false, message: `Your account has been restricted. Reason: ${user.restrictionReason || 'No reason provided'}. Please contact support.`})
+        }
+
         const isMatch = await bcrypt.compare(password, user.password)
         if(!isMatch){
             return res.json({success: false, message: "Invalid Credentials" })
@@ -229,6 +233,58 @@ export const getItems = async (req, res) =>{
     try {
         const items = await Item.find({isAvaliable: true})
         res.json({success: true, items})
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message: error.message})
+    }
+}
+
+// Restrict a user (admin/database operation)
+export const restrictUser = async (req, res) => {
+    try {
+        const { userId, reason } = req.body
+        
+        if(!userId || !reason){
+            return res.json({success: false, message: 'User ID and restriction reason are required'})
+        }
+        
+        const user = await User.findByIdAndUpdate(
+            userId, 
+            { isRestricted: true, restrictionReason: reason }, 
+            { new: true }
+        )
+        
+        if(!user){
+            return res.json({success: false, message: 'User not found'})
+        }
+        
+        res.json({success: true, message: `User ${user.email} has been restricted`, user})
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message: error.message})
+    }
+}
+
+// Unrestrict a user
+export const unrestrictUser = async (req, res) => {
+    try {
+        const { userId } = req.body
+        
+        if(!userId){
+            return res.json({success: false, message: 'User ID is required'})
+        }
+        
+        const user = await User.findByIdAndUpdate(
+            userId, 
+            { isRestricted: false, restrictionReason: '' }, 
+            { new: true }
+        )
+        
+        if(!user){
+            return res.json({success: false, message: 'User not found'})
+        }
+        
+        res.json({success: true, message: `User ${user.email} has been unrestricted`, user})
     } catch (error) {
         console.log(error.message);
         res.json({success: false, message: error.message})

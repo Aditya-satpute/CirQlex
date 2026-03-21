@@ -8,7 +8,9 @@ const userSchema = new mongoose.Schema({
     image: {type: String, default: ''},
     isVerified: { type: Boolean, default: false },
     otp: { type: String, default: '' },
-    otpExpiry: { type: Date }
+    otpExpiry: { type: Date },
+    isRestricted: { type: Boolean, default: false },
+    restrictionReason: { type: String, default: '' }
 },{timestamps: true})
 
 const User = mongoose.model('User', userSchema)

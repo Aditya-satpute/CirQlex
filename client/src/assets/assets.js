@@ -45,6 +45,7 @@ import car_image3 from "./car_image3.png"
 import car_image4 from "./car_image4.png"
 import hero_image from "./hero_image.png"
 import cirlogo from "./cirlogo.svg"
+import favicon from "./favicon.svg"
 
 export const cityList = ['New York', 'Los Angeles', 'Houston', 'Chicago']
 
@@ -95,7 +96,8 @@ export const assets = {
     car_image3,
     car_image4,
     hero_image,
-    cirlogo
+    cirlogo,
+    favicon
 }
 
 export const menuLinks = [

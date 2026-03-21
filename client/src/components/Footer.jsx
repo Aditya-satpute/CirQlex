@@ -82,7 +82,7 @@ const Footer = () => {
                         <li>Leorex</li>
                         <li>IIT Patna</li>
                         {/* <li>+91 8766494802</li> */}
-                        <li>cirqlex@gmail.com</li>
+                        <li>cirqlex.cs@gmail.com</li>
                     </ul>
                 </div>
 

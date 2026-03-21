@@ -1,5 +1,5 @@
 import express from "express";
-import { getItems, getUserData, loginUser, registerUser, verifyOtp, resendOtp, forgotPassword, resetPassword } from "../controllers/userController.js";
+import { getItems, getUserData, loginUser, registerUser, verifyOtp, resendOtp, forgotPassword, resetPassword, restrictUser, unrestrictUser } from "../controllers/userController.js";
 import { protect } from "../middleware/auth.js";
 
 const userRouter = express.Router();
@@ -12,5 +12,7 @@ userRouter.post('/forgot-password', forgotPassword)
 userRouter.post('/reset-password', resetPassword)
 userRouter.get('/data', protect, getUserData)
 userRouter.get('/items', getItems)
+userRouter.post('/restrict-user', restrictUser)
+userRouter.post('/unrestrict-user', unrestrictUser)
 
 export default userRouter;

@@ -43,7 +43,7 @@ const Banner = () => {
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        src={assets.banner_item_image} alt="item" className='max-h-45 mt-10'/>
+        src={assets.favicon} alt="item" className='max-h-45 mt-10'/>
       
     </motion.div>
   )
