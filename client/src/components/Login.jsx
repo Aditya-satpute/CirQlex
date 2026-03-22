@@ -131,6 +131,7 @@ const Login = () => {
             {state === 'login' && (
                 <p className="flex justify-between w-full">
                     <span>Need an account? <span onClick={() => {setState('register'); setOtp('')}} className="text-primary cursor-pointer">click here</span></span>
+                    <br />
                     <span onClick={() => {setState('forgot'); setOtp(''); setPassword('')}} className="text-primary cursor-pointer">Forgot password?</span>
                 </p>
             )}

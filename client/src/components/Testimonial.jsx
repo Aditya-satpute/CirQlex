@@ -6,27 +6,27 @@ import { motion } from 'motion/react';
 const Testimonial = () => {
 
     const testimonials = [
-        { name: "Emma Rodriguez", 
-          location: "Barcelona, Spain", 
+        { name: "1st year student", 
+          location: "CVR, IIT Patna", 
           image: assets.testimonial_image_1, 
-          testimonial: "I've rented cars from various companies, but the experience with CarRental was exceptional." 
+          testimonial: "Everyone told me to buy all the lab stuff in first year. No one told me I’d never use most of it again." 
         },
-        { name: "John Smith", 
-          location: "New York, USA", 
+        { name: "2nd year student", 
+          location: "Aryabhatta Hostel, IIT Patna", 
           image: assets.testimonial_image_2, 
-          testimonial: "CarRental made my trip so much easier. The car was delivered right to my door, and the customer service was fantastic!" 
+          testimonial: "My room has a cycle, cables, and random stuff I don’t use anymore. CirQlex feels like a good way to finally get rid of it." 
         },
-        { name: "Ava Johnson", 
-          location: "Sydney, Australia", 
+        { name: "3rd year student", 
+          location: "Kalam Hostel, IIT Patna", 
           image: assets.testimonial_image_1, 
-          testimonial: "I highly recommend CarRental! Their fleet is amazing, and I always feel like I'm getting the best deal with excellent service." 
+          testimonial: "At this point, I’ve realized half the things we buy in college are temporary. Would’ve saved a lot if this existed earlier." 
         }
     ];
 
   return (
     <div className="py-28 px-6 md:px-16 lg:px-24 xl:px-44">
             
-           <Title title="Voices from the Campus" subTitle="Real experiences from students using CirQlex to exchange items within campus."/>
+           <Title title="Voices from the Campus" subTitle="From first year excitement to third year reality"/>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-18">
                 {testimonials.map((testimonial, index) => (

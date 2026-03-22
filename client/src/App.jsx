@@ -14,6 +14,10 @@ import ManageBookings from './pages/owner/ManageBookings'
 import Login from './components/Login'
 import { Toaster } from 'react-hot-toast'
 import { useAppContext } from './context/AppContext'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import Terms from './pages/Terms'
+import AboutUs from './pages/AboutUs'
+import HelpCenter from './pages/HelpCenter'
 
 const App = () => {
 
@@ -38,6 +42,10 @@ const App = () => {
         <Route path="manage-items" element={<ManageItems />}/>
         <Route path="manage-bookings" element={<ManageBookings />}/>
       </Route>
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/about" element={<AboutUs />} />
+      <Route path="/help-center" element={<HelpCenter />} />
     </Routes>
 
     {!isOwnerPath && <Footer />}

@@ -1,6 +1,7 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 import { motion } from 'motion/react';
+import PrivacyPolicy from '../pages/PrivacyPolicy';
 
 const Footer = () => {
   return (
@@ -45,7 +46,7 @@ const Footer = () => {
                         <a href="https://www.instagram.com/cirqlex.in?utm_source=qr&igsh=MTQ4ejNjc3RyYWgwNA=="> 
                            <img src={assets.instagram_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> 
                         </a>
-                        <a href="#"> <img src={assets.gmail_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> </a>
+                        <a href="mailto:cirqlex.cs@gmail.com"> <img src={assets.gmail_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> </a>
                     </motion.div>
                 </div>
 
@@ -59,20 +60,20 @@ const Footer = () => {
                 <div>
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Quick Links</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Browse Items</a></li>
-                        <li><a href="#">List Your Item</a></li>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="http://localhost:5173">Home</a></li>
+                        <li><a href="http://localhost:5173/items">Browse Items</a></li>
+                        <li><a href="http://localhost:5173/owner/add-item">List Your Item</a></li>
+                        <li><a href="http://localhost:5173/about">About Us</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Resources</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Insurance</a></li>
+                        <li><a href="/help-center">Help Center</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        {/* <li><a href="#">Insurance</a></li> */}
                     </ul>
                 </div>
 
@@ -102,11 +103,11 @@ const Footer = () => {
             className='flex flex-col md:flex-row gap-2 items-center justify-between py-5'>
                 <p>© {new Date().getFullYear()} Brand. All rights reserved.</p>
                 <ul className='flex items-center gap-4'>
-                    <li><a href="#">Privacy</a></li>
+                    <li><a href="/privacy-policy">Privacy</a></li>
                     <li>|</li>
-                    <li><a href="#">Terms</a></li>
-                    <li>|</li>
-                    <li><a href="#">Cookies</a></li>
+                    <li><a href="/terms">Terms</a></li>
+                    {/* <li>|</li>
+                    <li><a href="#">Cookies</a></li> */}
                 </ul>
             </motion.div>
         </motion.div>
