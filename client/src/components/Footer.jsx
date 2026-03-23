@@ -40,9 +40,9 @@ const Footer = () => {
                         transition={{ duration: 0.5, delay: 0.5 }}
                     
                     className='flex items-center gap-3 mt-6'>
-                        <a href="#"> <img src={assets.discord_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> </a>
-                        <a href="#"> <img src={assets.reddit_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> </a>
-                        <a href="#"> <img src={assets.Linkedin_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> </a>
+                        {/* <a href="#"> <img src={assets.discord_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> </a>
+                        <a href="#"> <img src={assets.reddit_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> </a> */}
+                        <a href="https://www.linkedin.com/company/cirqlex-in/"> <img src={assets.Linkedin_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> </a>
                         <a href="https://www.instagram.com/cirqlex.in?utm_source=qr&igsh=MTQ4ejNjc3RyYWgwNA=="> 
                            <img src={assets.instagram_logo} className='w-5 h-5 grayscale brightness-0 opacity-60' alt="" /> 
                         </a>

@@ -27,7 +27,7 @@ export const registerUser = async (req, res)=>{
         }
 
         if(!isIitpEmail(email)){
-            return res.json({success: false, message: 'Only @iitp.ac.in email addresses are allowed'})
+            return res.json({success: false, message: 'Only IITP webmail id is allowed'})
         }
 
         const userExists = await User.findOne({email: email.toLowerCase()})
