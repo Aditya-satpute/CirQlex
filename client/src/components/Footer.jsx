@@ -60,10 +60,10 @@ const Footer = () => {
                 <div>
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Quick Links</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
-                        <li><a href="http://localhost:5173">Home</a></li>
-                        <li><a href="http://localhost:5173/items">Browse Items</a></li>
-                        <li><a href="http://localhost:5173/owner/add-item">List Your Item</a></li>
-                        <li><a href="http://localhost:5173/about">About Us</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="/items">Browse Items</a></li>
+                        <li><a href="/owner/add-item">List Your Item</a></li>
+                        <li><a href="/about">About Us</a></li>
                     </ul>
                 </div>
 

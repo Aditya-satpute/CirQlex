@@ -126,17 +126,7 @@ const AddItem = () => {
          {/* Item condition, Fuel Type, Seating Capacity */}
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
           
-          {/* <div className='flex flex-col w-full'>
-            <label>Fuel Type</label>
-            <select onChange={e=> setItem({...item, fuel_type: e.target.value})} value={item.fuel_type} className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none'>
-              <option value="">Select a fuel type</option>
-              <option value="Gas">Gas</option>
-              <option value="Diesel">Diesel</option>
-              <option value="Petrol">Petrol</option>
-              <option value="Electric">Electric</option>
-              <option value="Hybrid">Hybrid</option>
-            </select>
-          </div> */}
+
           <div className='flex flex-col w-full'>
             <label>Contact</label>
             <input type="tel" placeholder="Enter contact number" required maxLength={10} pattern="[0-9]{10}" className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none'  value={item.contact} onChange={e=> {
@@ -160,12 +150,6 @@ const AddItem = () => {
          {/* Item Location */}
          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
          
-
-         {/* <div className='flex flex-col w-full'>
-          <label>Contact Number</label>
-          <input type="tel" placeholder="9876543210" required className='px-3 py-2 mt-1 border border-borderColor rounded-md outline-none'  
-          onChange={e => setProduct({...product, contact: e.target.value})}/>
-          </div> */}
          </div>
          
         {/* Item Description */}
