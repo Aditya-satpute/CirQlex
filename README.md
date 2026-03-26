@@ -1,10 +1,10 @@
 # CirQlex : Circulate. Exchange. Save.
 
-**CirQlex** is a full-stack campus marketplace platform designed for IIT Patna students to buy and sell pre-owned items efficiently. It tackles the common issue of underutilized purchases—such as engineering tools and electronics—by creating a secure, student-only ecosystem for reuse and exchange.
+**CirQlex** is a full-stack campus marketplace platform designed for IIT Patna students to buy and sell pre-owned items efficiently. It tackles the common issue of underutilized purchases such as engineering tools and electronics by creating a secure, student-only ecosystem for reuse and exchange.
 
 ## Live Demo
 
-**Explore CirQlex live:**    [Click here]()
+**Explore CirQlex live:**    [www.cirqlex.me](www.cirqlex.me)
 
 ---
 
