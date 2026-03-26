@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-**Explore CirQlex live:**    [www.cirqlex.me](www.cirqlex.me)
+**Explore CirQlex live:**    [cirqlex.me](https://www.cirqlex.me)
 
 ---
 
