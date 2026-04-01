@@ -72,35 +72,36 @@ const Hero = () => {
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ duration: 0.8 }}
-  className='h-screen w-full flex flex-col md:flex-row items-center justify-center gap-6 md:gap-14 px-4 md:px-16 bg-light text-center'
+  className='min-h-[calc(100vh-64px)] mt-16 w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14 px-6 md:px-16 py-10 md:py-0 bg-light'
 >
-  <div className='flex-1 min-w-0 flex flex-col items-center md:items-start justify-center gap-3 md:gap-4 text-center md:text-left'>
+  {/* Text Content — always first on mobile */}
+  <div className='flex-1 min-w-0 flex flex-col items-center md:items-start justify-center gap-4 text-center md:text-left order-1 md:order-none'>
     <motion.h1 
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className='text-4xl md:text-5xl font-semibold leading-tight max-w-xl break-words'
+      className='text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight max-w-xl'
     >
-      CirQlex 
-      <p className='text-lg text-gray-600 mt-2'>
-    - Circulate. Exchange. Save.
-  </p>
+      CirQlex
+      <p className='text-base sm:text-lg text-gray-500 mt-2 font-normal'>
+        — Circulate. Exchange. Save.
+      </p>
     </motion.h1>
 
     <motion.p
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.35 }}
-      className='text-lg md:text-xl text-gray-600 max-w-lg'
+      className='text-base sm:text-lg md:text-xl text-gray-600 max-w-sm md:max-w-lg'
     >
-    Buy and sell within IITP community while keeping useful items in continuous use.
+      Buy and sell within IITP community while keeping useful items in continuous use.
     </motion.p>
 
     <motion.button
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className='mt-4 px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary-dull transition-all '
+      className='mt-2 px-7 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary-dull transition-all shadow-md'
       onClick={() => {
         if (user) {
           navigate('/owner/add-item')
@@ -114,17 +115,19 @@ const Hero = () => {
     </motion.button>
   </div>
 
-  <div className='flex-1 flex items-center justify-center min-w-0'>
+  {/* Hero Image — shown below text on mobile */}
+  <div className='flex-1 flex items-center justify-center min-w-0 order-2 md:order-none'>
     <motion.img 
       initial={{ y: 60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.6 }}
       src={assets.hero_image}
       alt='item'
-      className='w-[85vw] sm:w-[70vw] md:w-full max-w-lg max-h-[65vh] sm:max-h-[70vh] object-contain'
+      className='w-[78vw] sm:w-[55vw] md:w-full max-w-md md:max-w-lg max-h-[40vh] sm:max-h-[50vh] md:max-h-[70vh] object-contain'
     />
   </div>
 </motion.div>
+
   )
 }
 
