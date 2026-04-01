@@ -71,7 +71,7 @@ export const createBooking = async (req, res)=>{
 export const getUserBookings = async (req, res)=>{
     try {
         const {_id} = req.user;
-        const bookingsRaw = await Booking.find({ user: _id }).populate("item").sort({createdAt: -1})
+        const bookingsRaw = await Booking.find({ user: _id }).populate({ path: 'item', populate: { path: 'owner', select: 'name image email' } }).sort({createdAt: -1})
         const bookings = bookingsRaw.map(booking => ({
             ...booking.toObject(),
             item: booking.item || booking.car,

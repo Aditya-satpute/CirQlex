@@ -5,6 +5,7 @@ import Loader from '../components/Loader'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
 import { motion } from 'motion/react'
+import UserTag from '../components/UserTag'
 
 const ItemDetails = () => {
 
@@ -72,24 +73,32 @@ const ItemDetails = () => {
                   <h1 className='text-3xl font-bold break-words leading-tight word-break-all whitespace-normal'>{item.title}</h1>
                   <h2 className='text-xl font-semibold text-gray-700 break-words mt-1 word-break-all whitespace-normal'>{item.model}</h2>
                   <p className='text-gray-500 text-lg mt-2 break-words whitespace-normal'>{item.category}</p>
+                  
+                  {item.owner && (
+                      <div className="mt-4 inline-block">
+                          <UserTag user={item.owner} contact={item.contact} />
+                      </div>
+                  )}
                 </div>
                 <hr className='border-borderColor my-6'/>
 
-                <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
+                <div className='flex flex-wrap gap-x-10 gap-y-4 py-2'>
                   {[
-                    {icon: assets.users_icon, text: `${item.contact}`},
-                    // {icon: assets.fuel_icon, text: item.fuel_type},
-                    {icon: assets.car_icon, text: item.condition},
-                    {icon: assets.location_icon, text: item.location},
-                  ].map(({icon, text})=>(
+                    {icon: assets.car_icon, text: item.condition, label: 'Condition'},
+                    {icon: assets.location_icon, text: item.location, label: 'Location'},
+                  ].map(({icon, text, label})=>(
                     <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4 }}
-                    
-                    key={text} className='flex flex-col items-center bg-light p-4 rounded-lg'>
-                      <img src={icon} alt="" className='h-5 mb-2'/>
-                      {text}
+                    key={label} className='flex items-center gap-2.5'>
+                      <div className='bg-gray-100 p-2 rounded-full'>
+                        <img src={icon} alt="" className='h-4 w-4 opacity-70'/>
+                      </div>
+                      <div className='flex flex-col'>
+                         <span className='text-[10px] uppercase tracking-wider text-gray-400 font-bold'>{label}</span>
+                         <span className='text-sm font-semibold text-gray-700'>{text}</span>
+                      </div>
                     </motion.div>
                   ))}
                 </div>

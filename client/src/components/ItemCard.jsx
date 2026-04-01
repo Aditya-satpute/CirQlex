@@ -1,6 +1,7 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
+import UserTag from './UserTag'
 
 const ItemCard = ({item}) => {
 
@@ -30,10 +31,9 @@ const ItemCard = ({item}) => {
             </div>
         </div>
 
-        <div className='mt-4 grid grid-cols-2 gap-y-2 text-gray-600'>
-            <div className='flex items-center text-sm text-muted-foreground'>
-                <img src={assets.users_icon} alt="" className='h-4 mr-2'/>
-                <span>{item.contact}</span>
+        <div className='mt-4 grid grid-cols-2 gap-y-2 text-gray-600 relative z-10'>
+            <div className='col-span-2 mb-1'>
+                {item.owner && <UserTag user={item.owner} contact={item.contact} />}
             </div>
             
             <div className='flex items-center text-sm text-muted-foreground'>

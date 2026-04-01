@@ -104,11 +104,14 @@ export const menuLinks = [
     { name: "Home", path: "/" },
     { name: "Items", path: "/items" },
     { name: "My Bookings", path: "/my-bookings" },
+    { name: "Auctions", path: "/auctions" },
 ]
 
 export const ownerMenuLinks = [
+    { name: "My Profile", path: "/owner/profile", icon: addIcon, coloredIcon: addIconColored },
     { name: "Dashboard", path: "/owner", icon: dashboardIcon, coloredIcon: dashboardIconColored },
     { name: "Add item", path: "/owner/add-item", icon: addIcon, coloredIcon: addIconColored },
+    { name: "Add Auction", path: "/owner/add-auction", icon: addIcon, coloredIcon: addIconColored },
     { name: "Manage Items", path: "/owner/manage-items", icon: carIcon, coloredIcon: carIconColored },
     { name: "Manage Bookings", path: "/owner/manage-bookings", icon: listIcon, coloredIcon: listIconColored },
 ]

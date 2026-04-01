@@ -15,9 +15,11 @@ const Layout = () => {
   return (
     <div className='flex flex-col'>
       <NavbarOwner />
-      <div className='flex'>
+      <div className='flex w-full'>
         <Sidebar />
-        <Outlet />
+        <div className="flex-1 w-full min-w-0 overflow-x-hidden">
+          <Outlet />
+        </div>
       </div>
     </div>
   )

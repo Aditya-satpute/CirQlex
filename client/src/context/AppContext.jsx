@@ -20,6 +20,7 @@ export const AppProvider = ({ children })=>{
     const [pickupTime, setPickupTime] = useState('')
 
     const [items, setItems] = useState([])
+    const [notifications, setNotifications] = useState([])
 
     // Function to check if user is logged in
     const fetchUser = async ()=>{
@@ -46,6 +47,18 @@ export const AppProvider = ({ children })=>{
         }
     }
 
+    const fetchNotifications = async () => {
+        if (!token) return;
+        try {
+            const { data } = await axios.get('/api/notifications/list');
+            if (data.success) {
+                setNotifications(data.notifications);
+            }
+        } catch (error) {
+            console.error("Notifications fetch error:", error.message);
+        }
+    }
+
     // Function to log out the user
     const logout = ()=>{
         localStorage.removeItem('token')
@@ -69,13 +82,15 @@ export const AppProvider = ({ children })=>{
         if(token){
             axios.defaults.headers.common['Authorization'] = `${token}`
             fetchUser()
+            fetchNotifications()
         }
     },[token])
 
     const value = {
         navigate, currency, axios, user, setUser,
         token, setToken, isOwner, setIsOwner, fetchUser, showLogin, setShowLogin, logout, fetchItems, items, setItems,
-        pickupDate, setPickupDate, pickupTime, setPickupTime
+        pickupDate, setPickupDate, pickupTime, setPickupTime,
+        notifications, setNotifications, fetchNotifications
     }
 
     return (

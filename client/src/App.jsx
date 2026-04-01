@@ -8,7 +8,9 @@ import MyBookings from './pages/MyBookings'
 import Footer from './components/Footer'
 import Layout from './pages/owner/Layout'
 import Dashboard from './pages/owner/Dashboard'
+import MyProfile from './pages/owner/MyProfile'
 import AddItem from './pages/owner/AddItem'
+import AddAuction from './pages/owner/AddAuction'
 import ManageItems from './pages/owner/ManageItems'
 import ManageBookings from './pages/owner/ManageBookings'
 import Login from './components/Login'
@@ -18,38 +20,61 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import Terms from './pages/Terms'
 import AboutUs from './pages/AboutUs'
 import HelpCenter from './pages/HelpCenter'
+import AuctionsMenu from './pages/auctions/AuctionsMenu'
+import LiveAuctionRoom from './pages/auctions/LiveAuctionRoom'
+import PastTrades from './pages/auctions/PastTrades'
 
 const App = () => {
 
-  const {showLogin} = useAppContext()
-  const isOwnerPath = useLocation().pathname.startsWith('/owner')
+  const { showLogin, setToken, navigate } = useAppContext()
+  const location = useLocation()
+  const isOwnerPath = location.pathname.startsWith('/owner')
+  const isHomePage = location.pathname === '/'
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const token = params.get('token')
+    if (token) {
+      setToken(token)
+      localStorage.setItem('token', token)
+      // Clean up the URL
+      navigate(window.location.pathname, { replace: true })
+    }
+  }, [setToken, navigate])
 
   return (
     <>
-     <Toaster />
-      {showLogin && <Login/>}
+      <Toaster />
+      {showLogin && <Login />}
 
-      {!isOwnerPath && <Navbar/>}
+      {!isOwnerPath && <Navbar />}
 
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/item-details/:id' element={<ItemDetails/>}/>
-      <Route path='/items' element={<Items/>}/>
-      <Route path='/my-bookings' element={<MyBookings/>}/>
-      <Route path='/owner' element={<Layout />}>
-        <Route index element={<Dashboard />}/>
-        <Route path="add-item" element={<AddItem />}/>
-        <Route path="manage-items" element={<ManageItems />}/>
-        <Route path="manage-bookings" element={<ManageBookings />}/>
-      </Route>
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/terms" element={<Terms />} />
-      <Route path="/about" element={<AboutUs />} />
-      <Route path="/help-center" element={<HelpCenter />} />
-    </Routes>
+      <main className={!isOwnerPath && !isHomePage ? "pb-16 md:pb-24" : ""}>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/item-details/:id' element={<ItemDetails />} />
+          <Route path='/items' element={<Items />} />
+          <Route path='/my-bookings' element={<MyBookings />} />
+          <Route path='/owner' element={<Layout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="profile" element={<MyProfile />} />
+            <Route path="add-item" element={<AddItem />} />
+            <Route path="add-auction" element={<AddAuction />} />
+            <Route path="manage-items" element={<ManageItems />} />
+            <Route path="manage-bookings" element={<ManageBookings />} />
+          </Route>
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/help-center" element={<HelpCenter />} />
+          <Route path="/auctions" element={<AuctionsMenu />} />
+          <Route path="/auctions/live/:id" element={<LiveAuctionRoom />} />
+          <Route path="/auctions/past" element={<PastTrades />} />
+        </Routes>
+      </main>
 
-    {!isOwnerPath && <Footer />}
-    
+      {!isOwnerPath && isHomePage && <Footer />}
+
     </>
   )
 }

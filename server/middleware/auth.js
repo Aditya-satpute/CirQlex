@@ -7,19 +7,24 @@ export const protect = async (req, res, next)=>{
         return res.json({success: false, message: "not authorized"})
     }
     try {
-        const userId = jwt.decode(token, process.env.JWT_SECRET)
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-        if(!userId){
+        if(!decoded || !decoded.id){
             return res.json({success: false, message: "not authorized"})
         }
-        req.user = await User.findById(userId).select("-password")
+        req.user = await User.findById(decoded.id).select("-password")
         
+        if(!req.user){
+            return res.json({success: false, message: "User no longer exists"})
+        }
+
         if(req.user.isRestricted){
             return res.json({success: false, message: "Your account has been restricted and you cannot access this resource."})
         }
         
         next();
     } catch (error) {
-        return res.json({success: false, message: "not authorized"})
+        console.error('Auth middleware error:', error.message);
+        return res.json({success: false, message: "session expired or invalid token"})
     }
 }

@@ -36,11 +36,12 @@ const FeaturedSection = () => {
         transition={{ delay: 0.5, duration: 1 }}
         className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-18'>
         {
-            newestItems.map((item)=> (
+            newestItems.map((item, index)=> (
                 <motion.div key={item._id}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, ease: "easeOut"  }}
+                className={index >= 2 ? 'hidden sm:block' : ''}
                 >
                     <ItemCard item={item}/>
                 </motion.div>

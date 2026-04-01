@@ -74,50 +74,57 @@ const ManageItems = () => {
         </button>
       </div>
 
-      <div className='max-w-3xl w-full rounded-md overflow-hidden border border-borderColor mt-6'>
+      <div className='max-w-4xl w-full rounded-xl overflow-hidden border border-gray-200 mt-6 bg-white shadow-sm'>
 
-        <table className='w-full border-collapse text-left text-sm text-gray-600'>
-          <thead className='text-gray-500'>
-            <tr>
-              <th className="p-3 font-medium">Item</th>
-              <th className="p-3 font-medium max-md:hidden">Category</th>
-              <th className="p-3 font-medium">Price</th>
-              <th className="p-3 font-medium max-md:hidden">Status</th>
-              <th className="p-3 font-medium">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item, index)=>(
-              <tr key={index} className='border-t border-borderColor'>
+        <div className="overflow-x-auto">
+            <table className='w-full min-w-[600px] border-collapse text-left text-sm text-gray-600'>
+              <thead className='text-gray-500 bg-gray-50/50 border-b border-gray-200'>
+                <tr>
+                  <th className="p-4 font-semibold whitespace-nowrap">Item</th>
+                  <th className="p-4 font-semibold whitespace-nowrap">Category</th>
+                  <th className="p-4 font-semibold whitespace-nowrap">Price</th>
+                  <th className="p-4 font-semibold whitespace-nowrap">Status</th>
+                  <th className="p-4 font-semibold whitespace-nowrap">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {items.map((item, index)=>(
+                  <tr key={index} className='hover:bg-gray-50/50 transition-colors'>
 
-                <td className='p-3 flex items-center gap-3'>
-                  <img src={item.image} alt="" className="h-12 w-12 aspect-square rounded-md object-cover"/>
-                  <div className='max-md:hidden'>
-                    <p className='font-medium break-words max-w-[12rem]'>{item.title} {item.model}</p>
-                    <p className='text-xs text-gray-500 break-words max-w-[12rem]'>{item.contact} • {item.condition}</p>
+                    <td className='p-4 flex items-center gap-3 w-max'>
+                      <img src={item.image} alt="" className="h-12 w-12 xl:h-14 xl:w-14 aspect-square rounded-lg object-cover shadow-sm"/>
+                      <div>
+                        <p className='font-bold text-gray-800 break-words max-w-[14rem]'>{item.title} {item.model}</p>
+                        <p className='text-xs text-gray-400 mt-0.5'>{item.contact} • {item.condition}</p>
+                      </div>
+                    </td>
+
+                    <td className='p-4 whitespace-nowrap font-medium'>{item.category}</td>
+                    <td className='p-4 whitespace-nowrap font-bold text-gray-900'>{currency}{item.pricePerDay}</td>
+
+                    <td className='p-4 whitespace-nowrap'>
+                      <span className={`px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border ${item.isAvaliable ? 'bg-green-50 text-green-600 border-green-100' : 'bg-red-50 text-red-600 border-red-100'}`}>
+                        {item.isAvaliable ? "Available" : "Unavailable" }
+                      </span>
+                    </td>
+
+                <td className='p-4 whitespace-nowrap min-w-[100px]'>
+                  <div className="flex items-center gap-5">
+                      <button onClick={()=> toggleAvailability(item._id)} className='p-1.5 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer group flex-shrink-0' title="Toggle Visibility">
+                        <img src={item.isAvaliable ? assets.eye_close_icon : assets.eye_icon} alt="" className='w-6 h-6 md:w-7 md:h-7 opacity-75 group-hover:opacity-100 transition-opacity'/>
+                      </button>
+
+                      <button onClick={()=> deleteItem(item._id)} className='p-1.5 hover:bg-red-50 rounded-lg transition-colors cursor-pointer group flex-shrink-0' title="Delete">
+                        <img src={assets.delete_icon} alt="" className='w-6 h-6 md:w-7 md:h-7 opacity-75 group-hover:opacity-100 transition-opacity'/>
+                      </button>
                   </div>
-                </td>
-
-                <td className='p-3 max-md:hidden'>{item.category}</td>
-                <td className='p-3'>{currency}{item.pricePerDay}</td>
-
-                <td className='p-3 max-md:hidden'>
-                  <span className={`px-3 py-1 rounded-full text-xs ${item.isAvaliable ? 'bg-green-100 text-green-500' : 'bg-red-100 text-red-500'}`}>
-                    {item.isAvaliable ? "Available" : "Unavailable" }
-                  </span>
-                </td>
-
-                <td className='flex items-center p-3'>
-
-                  <img onClick={()=> toggleAvailability(item._id)} src={item.isAvaliable ? assets.eye_close_icon : assets.eye_icon} alt="" className='cursor-pointer'/>
-
-                  <img onClick={()=> deleteItem(item._id)} src={assets.delete_icon} alt="" className='cursor-pointer'/>
                 </td>
 
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
 
       </div>
 
